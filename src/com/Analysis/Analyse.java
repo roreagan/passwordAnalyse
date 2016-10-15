@@ -1,7 +1,13 @@
 package com.Analysis;
 
+import com.database.ResultOperator;
+import com.state.DatePattern;
 import com.state.KeyboardState;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +27,7 @@ public class Analyse {
                 characterMap.put(temp,  characterMap.get(temp)+1);
             }
         }
-        //todo: transform the map to the database
+        ResultOperator.getInstance().analyseCharacter(characterMap);
     }
 
     public void structures(String password){
@@ -38,10 +44,10 @@ public class Analyse {
                 structure += "S";
             }
         }
-        //todo: transform the structure to the database
+        ResultOperator.getInstance().add(structure, "structure");
     }
 
-    public int keyboardPattern(String password){
+    public void keyboardPattern(String password){
         KeyboardState result = KeyboardState.NO_PATTERN;
         boolean sameRow = true;
         boolean zigZag = true;
@@ -52,7 +58,8 @@ public class Analyse {
                 sameRow = sameRow & KeyboardClass.getInstance().isSameRow(pos1, pos2);
                 zigZag = zigZag & !KeyboardClass.getInstance().isSameRow(pos1,pos2);
             } else {
-                return result.getState();
+                ResultOperator.getInstance().addKeyboardPattern(result.getState());
+                return;
             }
         }
         if(sameRow) {
@@ -66,29 +73,40 @@ public class Analyse {
         } else {
             result = KeyboardState.SNAKE;
         }
-        return result.getState();
-        //todo: transform the result to the database
+        ResultOperator.getInstance().addKeyboardPattern(result.getState());
     }
 
-    public void wordsAnalyse(String password, String language) {
+    public void wordsAnalyse(String password) {
         //convert the input to letter-only
         String input = "";
+        boolean letterOnly = true;
         password = password.toLowerCase();
         for(int i = 0; i < password.length(); i++) {
             char c = password.charAt(i);
             if(c >= 97 && c <= 122) {
                 input += c;
+            } else {
+                letterOnly = false;
             }
         }
-        WordsMatch.getInstance().identifyWord(input, language);
-        //todo: transform the result to the database
+        boolean isPinyin = WordsMatch.getInstance().identifyWord(input, "pinyin");
+        boolean isEnglish = WordsMatch.getInstance().identifyWord(input, "english");
+        ResultOperator.getInstance().addWordsPattern(isPinyin, isEnglish, letterOnly, password);
     }
 
     public void dataFormat(String password) {
         //find the consecutive numbers of exactly six or eight digits
         String date = "";
         int result = 0;
-        //todo: analyse the composition of the password containing date
+        DatePattern datePattern = DatePattern.DIGIT_ONLY;
+        for(int i = 0; i < password.length(); i++) {
+            char c = password.charAt(i);
+            if((c >= 65 && c <= 90) || (c >= 97 && c <= 122)) {
+                datePattern.changeValue("letter");
+            } else if(c < 48 || c > 57) {
+                datePattern.changeValue("symbol");
+            }
+        }
         for(int i = 0; i < password.length(); i++) {
             String temp = "";
             int j = i;
@@ -109,13 +127,33 @@ public class Analyse {
         if(date.length() == 6 || date.length() == 8) {
             result = DateFormat.getInstance().dateAnalyse(date);
         }
-        //todo: transform the result to the database
+        if(result != 7) {
+            ResultOperator.getInstance().addDatePattern(result, datePattern.getDatePattern());
+        }
         //todo: finally we need to deal with the temp data
     }
 
 
     public static void main(String args[]){
         Analyse analyse = new Analyse();
-        analyse.dataFormat("ab19950222");
+
+        File file = new File("163mail.txt");
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(file));
+            String tempString = null;
+            while((tempString = reader.readLine()) != null) {
+               ResultOperator.getInstance().add(tempString, "password");
+                analyse.characterDistribution(tempString);
+                analyse.structures(tempString);
+                analyse.keyboardPattern(tempString);
+                analyse.wordsAnalyse(tempString);
+                analyse.dataFormat(tempString);
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ResultOperator.getInstance().addRestDatePattern(DateFormat.getInstance().getRestDatePattern());
     }
 }

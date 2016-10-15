@@ -12,7 +12,7 @@ public class DateFormat {
 
     private static DateFormat dateFormat = null;
 
-    private static int[] ambiguity = new int[8];
+    private static long[] ambiguity = new long[8];
 
     private DateFormat() {
         String[] falseDate = {"111111", "123123", "111000", "112233",
@@ -150,5 +150,9 @@ public class DateFormat {
             }
         }
         return result.getDate();
+    }
+
+    public long[] getRestDatePattern() {
+        return ambiguity;
     }
 }

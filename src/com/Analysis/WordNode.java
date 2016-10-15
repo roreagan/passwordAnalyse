@@ -9,9 +9,15 @@ import java.util.Map;
 public class WordNode {
     //todo changing Map to List can accelerate the searching
     public Map<Character, WordNode> nodeList = new HashMap<>();
-    boolean isValue;
+    public boolean isValue;
+    public int num = 0;
+    public char c;
 
     public WordNode() {
 
+    }
+
+    public WordNode(char c) {
+        this.c = c;
     }
 }

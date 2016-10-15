@@ -8,10 +8,10 @@ public enum DateState {
     YYYYMMDD(1),
     MMDDYYYY(2),
     DDMMYYYY(3),
-    YYMMDD(11),
-    MMDDYY(12),
-    DDMMYY(13),
-    TEMP(100);
+    YYMMDD(4),
+    MMDDYY(5),
+    DDMMYY(6),
+    TEMP(7);
 
     private int date;
 

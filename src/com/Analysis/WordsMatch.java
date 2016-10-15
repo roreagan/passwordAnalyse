@@ -14,7 +14,7 @@ public class WordsMatch {
     private static WordNode englishNode = new WordNode();
 
     private WordsMatch(){
-        generateTire(chineseNode, "chinese");
+        generateTire(chineseNode, "pinyin");
         generateTire(englishNode, "english");
     }
 
@@ -55,7 +55,7 @@ public class WordsMatch {
     //the input password should be letter-only
     public boolean identifyWord(String password, String language) {
         WordNode node;
-        if(language.equals("chinese")) {
+        if(language.equals("pinyin")) {
             node = chineseNode;
         } else {
             node = englishNode;
