@@ -137,7 +137,7 @@ public class Analyse {
     public static void main(String args[]){
         Analyse analyse = new Analyse();
 
-        File file = new File("163mail.txt");
+        File file = new File("test");
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader(file));
@@ -155,5 +155,6 @@ public class Analyse {
             e.printStackTrace();
         }
         ResultOperator.getInstance().addRestDatePattern(DateFormat.getInstance().getRestDatePattern());
+        //todo transform the data from ResultOperator to database or just print it
     }
 }

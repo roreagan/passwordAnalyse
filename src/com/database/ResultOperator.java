@@ -19,9 +19,13 @@ public class ResultOperator {
     private static Map<String, Integer> pinyinMap = new HashMap<>();
 
     private static Map<Character, Integer> characterIntegerMap = new HashMap();
+    //relate to KeyboardState
     private static long[] keyboardPattern = {0, 0, 0, 0, 0};
+    //0: pinyin_letter only   1: english_letter only   2: pinyin_mix    3:english_mix
     private static long[] wordsPattern = {0, 0, 0, 0};
-    private static long[] datePattern = {0, 0, 0, 0, 0, 0};
+    //relate to DateState
+    private static long[] datePattern = {0, 0, 0, 0, 0, 0, 0};
+    //relate to DatePattern
     private static long[] passDatePattern = {0, 0, 0, 0};
 
     private static ResultOperator resultOperator = null;
@@ -75,8 +79,8 @@ public class ResultOperator {
     }
 
     private void searchTrie(WordNode node, String string, String nodeType) {
-        for(int i = 0; i < node.nodeList.size(); i++) {
-            searchTrie(node.nodeList.get(i), string + node.c, nodeType);
+        for(WordNode tempNode : node.nodeList.values()) {
+            searchTrie(tempNode, string + tempNode.c, nodeType);
         }
         if(node.isValue) {
             Map<String, Integer> map = chooseMap(nodeType);
