@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d738894e-3d7f-4fec-92ea-e0c400161c2b" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/chinese" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/PasswordAnalysis/com/Analysis/FindMost.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/Analysis/Analyse.java" afterPath="$PROJECT_DIR$/src/com/Analysis/Analyse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/database/ResultOperator.java" afterPath="$PROJECT_DIR$/src/com/database/ResultOperator.java" />
     </list>
     <ignored path="PasswordAnalysis.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,8 +28,8 @@
       <file leaf-file-name="Analyse.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/Analysis/Analyse.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="158" column="5" selection-start-line="158" selection-start-column="5" selection-end-line="158" selection-end-column="5" />
+            <state relative-caret-position="334">
+              <caret line="149" column="49" selection-start-line="149" selection-start-column="49" selection-end-line="149" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -138,8 +137,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="105" />
-    <option name="y" value="45" />
+    <option name="x" value="99" />
+    <option name="y" value="96" />
     <option name="width" value="1753" />
     <option name="height" value="951" />
   </component>
@@ -590,7 +589,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="105" y="45" width="1753" height="951" extended-state="0" />
+    <frame x="99" y="96" width="1753" height="951" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -865,8 +864,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/Analysis/Analyse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="158" column="5" selection-start-line="158" selection-start-column="5" selection-end-line="158" selection-end-column="5" />
+        <state relative-caret-position="334">
+          <caret line="149" column="49" selection-start-line="149" selection-start-column="49" selection-end-line="149" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
