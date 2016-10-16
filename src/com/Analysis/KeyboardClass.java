@@ -63,7 +63,7 @@ public class KeyboardClass {
         boolean adjacent = false;
         List<Integer> position1 = keyboard.get(pos1);
         List<Integer> position2 = keyboard.get(pos2);
-        if((Math.abs(position1.get(0) - position2.get(0)) == 1) && (Math.abs(position1.get(1) - position2.get(1)) == 1)) {
+        if((Math.abs(position1.get(0) - position2.get(0)) <= 1) && (Math.abs(position1.get(1) - position2.get(1)) <= 1)) {
             adjacent = true;
         }
         return adjacent;

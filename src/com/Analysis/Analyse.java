@@ -91,7 +91,7 @@ public class Analyse {
         }
         boolean isPinyin = WordsMatch.getInstance().identifyWord(input, "pinyin");
         boolean isEnglish = WordsMatch.getInstance().identifyWord(input, "english");
-        ResultOperator.getInstance().addWordsPattern(isPinyin, isEnglish, letterOnly, password);
+        ResultOperator.getInstance().addWordsPattern(isPinyin, isEnglish, letterOnly, input);
     }
 
     public void dataFormat(String password) {
@@ -126,17 +126,15 @@ public class Analyse {
         }
         if(date.length() == 6 || date.length() == 8) {
             result = DateFormat.getInstance().dateAnalyse(date);
+            if(result != 7) {
+                ResultOperator.getInstance().addDatePattern(result, datePattern.getDatePattern());
+            }
         }
-        if(result != 7) {
-            ResultOperator.getInstance().addDatePattern(result, datePattern.getDatePattern());
-        }
-        //todo: finally we need to deal with the temp data
     }
 
 
     public static void main(String args[]){
         Analyse analyse = new Analyse();
-
         File file = new File("test");
         BufferedReader reader = null;
         try {
@@ -155,6 +153,7 @@ public class Analyse {
             e.printStackTrace();
         }
         ResultOperator.getInstance().addRestDatePattern(DateFormat.getInstance().getRestDatePattern());
+        ResultOperator.getInstance().findTop10("password");
         //todo transform the data from ResultOperator to database or just print it
     }
 }
