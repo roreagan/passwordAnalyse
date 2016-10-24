@@ -18,3 +18,8 @@ passwordAnalyse
 todo:<br>
 1. 对英文单词词库（即english文件）进行更新;<br>
 2. Trie树的定义以及相关算法（例如找Top10）存在可以优化的点;<br>
+
+密码强度分析：<br>
+1. 暂时采用了Markov算法，就一个com.strngth.estimation.java；<br>
+2. Markov算法学习后得到的数据需要保存在一个文件中，下一次启动就直接读文件，暂时还没有存下来；<br>
+3. 可能需要更改文件中的Estimation.minP；
