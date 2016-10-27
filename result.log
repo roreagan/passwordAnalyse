@@ -1,0 +1,24 @@
+总共分析的密码数
+10000
+字符的使用频率
+!:20    $:2    &:1    ':1    (:2    ):2    *:43    ,:5    -:281    .:64    /:10    0:7792    1:11097    2:7617    3:6036    4:4123    5:5590    6:5206    7:4342    8:6637    9:6167    ;:4    =:7    ?:12    @:53    A:77    B:23    C:31    D:40    E:34    F:28    G:58    H:59    I:53    J:52    K:14    L:83    M:29    N:71    O:34    P:13    Q:36    R:17    S:27    T:17    U:37    V:3    W:38    X:47    Y:72    Z:60    ^:3    `:1    a:1938    b:427    c:723    d:535    e:1021    f:398    g:1015    h:1126    i:1780    j:673    k:298    l:1136    m:536    n:1789    o:1044    p:269    q:442    r:367    s:822    t:426    u:904    v:136    w:865    x:694    y:1092    z:769    ~:9    
+21225
+1053
+64607
+1053
+密码结构Top10
+LLLLLL:137    LLLLLLLL:145    DDDDDD:1859    LLLDDDDDD:200    DDDDDDDDD:514    DDDDDDDDDDD:447    LLDDDDDD:123    DDDDDDD:1146    DDDDDDDDDD:271    DDDDDDDD:1142    
+常用密码Top10
+131420:4    5201314:7    000000:8    123456a:5    123123:7    123456:141    111111:13    123321:8    123456789:28    5211314:4    
+键盘密码
+no_pattern:9673    same_row:18    zig_zag:10    snake:27    same_row_number_only:272
+日期格式分析
+no_date:2516    YYYYMMDD:915    MMDDYYYY:17    DDMMYYYY:6    YYMMDD:793    MMDDYY:122    DDMMYY:44
+日期密码构成
+digit_only:1280    letter_digit:594    symbol_digit:1    letter_digit_symbol:30
+拼音Top10
+chen:12    lin:8    tian:7    wang:12    liu:16    zhang:8    yu:7    li:16    long:6    wu:6    
+英文单词Top10
+com:27    qq:18    q:16    as:13    abc:34    asd:16    w:20    z:15    qwe:13    abcd:13    
+单词密码构成
+pinyin_letter_only:375    english_letter_only:317    pinyin_mixed:1011    english_mixed:2374    pinyin_uppercase_letter:82    english_uppercase_letter:226

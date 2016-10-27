@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Random;
 
 /**
  * Created by lgluo on 2016/10/15.
@@ -74,5 +77,30 @@ public class WordsMatch {
             }
         }
         return node.isValue;
+    }
+
+    public String generatePassword(boolean isPinyin) {
+        String result = "";
+        WordNode root = isPinyin ? chineseNode : englishNode;
+        Random ra = new Random();
+        int length = ra.nextInt(10) + 6;
+        while(result.length() < length){
+            WordNode node = root;
+            String word = "";
+            while(!(node.nodeList.size() == 0 || (node.isValue && ra.nextInt(2)==1))) {
+                int nextNum = ra.nextInt(node.nodeList.size());
+                int i = 0;
+                for(Map.Entry entry : node.nodeList.entrySet()){
+                    if(i == nextNum) {
+                        word += (Character)entry.getKey();
+                        node = (WordNode) entry.getValue();
+                        break;
+                    }
+                    i++;
+                }
+            }
+            result += word;
+        }
+        return result;
     }
 }

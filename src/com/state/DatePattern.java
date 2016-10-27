@@ -15,22 +15,6 @@ public enum DatePattern {
         this.datePattern = datePattern;
     }
 
-    public void changeValue(String string) {
-        if(string.equals("letter")) {
-            if(datePattern == 0) {
-                datePattern = 1;
-            } else if(datePattern == 2) {
-                datePattern = 3;
-            }
-        } else {
-            if(datePattern == 0) {
-                datePattern = 2;
-            } else if(datePattern == 1) {
-                datePattern = 3;
-            }
-        }
-    }
-
     public int getDatePattern() {
         return datePattern;
     }

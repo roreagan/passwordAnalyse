@@ -1,9 +1,8 @@
 package com.Analysis;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.state.KeyboardState;
+
+import java.util.*;
 
 /**
  * Created by lgluo on 2016/10/14.
@@ -71,5 +70,43 @@ public class KeyboardClass {
 
     public boolean isSameRow(char pos1, char pos2) {
         return (keyboard.get(pos1).get(1).equals(keyboard.get(pos2).get(1)));
+    }
+
+    public String generatePassword(KeyboardState state) {
+        String result = "";
+        String items = "\"`1234567890-=~!@#$%^&*()_+\"qwertyuiop[]\\QWERTYUIOP{}|asdfghjkl;'ASDFGHJKL:\"zxcvbnm,./ZXCVBNM<>?";
+        List<String> chars = new ArrayList<>();
+        chars.add("`1234567890-=~!@#$%^&*()_+");
+        chars.add("qwertyuiop[]\\QWERTYUIOP{}|");
+        chars.add("asdfghjkl;'ASDFGHJKL:\"");
+        chars.add("zxcvbnm,./ZXCVBNM<>?");
+        Random ra = new Random();
+        if(state == KeyboardState.SAME_ROW_NUMBER_ONLY) {
+            result += (chars.get(0).charAt(ra.nextInt(chars.get(0).length())));
+        } else {
+            result += items.charAt(ra.nextInt(items.length()));
+        }
+        int length = (int)(6 + Math.random() * 4);
+        for(int i = 0; i < length; i++) {
+            char c = result.charAt(result.length() - 1);
+            int pos1 = keyboard.get(c).get(0);
+            int pos2 = keyboard.get(c).get(1);
+            if(state == KeyboardState.SAME_ROW && state == KeyboardState.SAME_ROW_NUMBER_ONLY) {
+                pos1 = (pos1 + ra.nextInt(3) - 1) % (chars.get(pos2).length() / 2);
+                pos1 = pos1 >= 0 ? pos1 : -pos1;
+            } else if(state == KeyboardState.ZIG_ZAG) {
+                pos2 = (pos2 + (ra.nextInt(2) == 1 ? 1 : -1)) % 4;
+                pos2 = pos2 >= 0 ? pos2 : -pos2;
+                pos1 = (pos1 + ra.nextInt(2)) % (chars.get(pos2).length() / 2);
+                pos1 = pos1 >= 0 ? pos1 : -pos1;
+            } else{
+                pos2 = (pos2 + ra.nextInt(3) - 1) % 4;
+                pos2 = pos2 >= 0 ? pos2 : -pos2;
+                pos1 = (pos1 + ra.nextInt(3) - 1) % (chars.get(pos2).length() / 2);
+                pos1 = pos1 >= 0 ? pos1 : -pos1;
+            }
+            result += chars.get(pos2).charAt(pos1);
+        }
+        return result;
     }
 }

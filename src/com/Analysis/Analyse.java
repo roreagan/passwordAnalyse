@@ -1,8 +1,10 @@
 package com.Analysis;
 
 import com.database.ResultOperator;
+import com.generate.GenerateLibrary;
 import com.state.DatePattern;
 import com.state.KeyboardState;
+import com.strength.Estimation;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -37,7 +39,7 @@ public class Analyse {
             if(i >= 48 && i <= 57) {
                 structure += "D";
             } else if(i >= 65 && i <= 90) {
-                structure += "H";
+                structure += "U";
             } else if(i >= 97 && i <= 122) {
                 structure += "L";
             } else {
@@ -78,6 +80,12 @@ public class Analyse {
 
     public void wordsAnalyse(String password) {
         //convert the input to letter-only
+        boolean isUppercase = false;
+        for(int i = 0; i < password.length(); i++) {
+            if(password.charAt(i) >= 65 && password.charAt(i) <= 90) {
+                isUppercase = true;
+            }
+        }
         String input = "";
         boolean letterOnly = true;
         password = password.toLowerCase();
@@ -91,7 +99,7 @@ public class Analyse {
         }
         boolean isPinyin = WordsMatch.getInstance().identifyWord(input, "pinyin");
         boolean isEnglish = WordsMatch.getInstance().identifyWord(input, "english");
-        ResultOperator.getInstance().addWordsPattern(isPinyin, isEnglish, letterOnly, input);
+        ResultOperator.getInstance().addWordsPattern(isPinyin, isEnglish, letterOnly, input, isUppercase);
     }
 
     public void dataFormat(String password) {
@@ -102,9 +110,17 @@ public class Analyse {
         for(int i = 0; i < password.length(); i++) {
             char c = password.charAt(i);
             if((c >= 65 && c <= 90) || (c >= 97 && c <= 122)) {
-                datePattern.changeValue("letter");
+                if(datePattern == DatePattern.DIGIT_ONLY) {
+                    datePattern = DatePattern.LETTER_DIGIT;
+                } else if(datePattern == DatePattern.SYMBOL_DIGIT) {
+                    datePattern = DatePattern.LETTER_DIGIT_SYMBOL;
+                }
             } else if(c < 48 || c > 57) {
-                datePattern.changeValue("symbol");
+                if(datePattern == DatePattern.DIGIT_ONLY) {
+                    datePattern = DatePattern.SYMBOL_DIGIT;
+                } else if(datePattern == DatePattern.LETTER_DIGIT) {
+                    datePattern = DatePattern.LETTER_DIGIT_SYMBOL;
+                }
             }
         }
         for(int i = 0; i < password.length(); i++) {
@@ -128,6 +144,8 @@ public class Analyse {
             result = DateFormat.getInstance().dateAnalyse(date);
             if(result != 7) {
                 ResultOperator.getInstance().addDatePattern(result, datePattern.getDatePattern());
+            } else {
+                ResultOperator.getInstance().addDatePattern(datePattern.getDatePattern());
             }
         }
     }
@@ -147,13 +165,17 @@ public class Analyse {
                 analyse.keyboardPattern(tempString);
                 analyse.wordsAnalyse(tempString);
                 analyse.dataFormat(tempString);
+                //Estimation::add() is a training process
+//                Estimation.getInstance().add(tempString);
             }
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
         ResultOperator.getInstance().addRestDatePattern(DateFormat.getInstance().getRestDatePattern());
-        ResultOperator.getInstance().findTop10("password");
-        //todo transform the data from ResultOperator to database or just print it
+        ResultOperator.getInstance().output();
+        //GenerateLibrary::generatePassword() can't be invoked before ResultOperator::output()
+        //because GenerateLibrary should use result.log to initialization
+        GenerateLibrary.getInstance().generatePassword();
     }
 }

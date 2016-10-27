@@ -10,10 +10,23 @@ import java.util.Map;
  */
 public class Estimation {
     public final int GRAMLEN = 3;
-    public final double miniP = 0.00000001;
+    public final double miniP = 0.001;
     //用来过滤用的比较少的字符来节省内存
     private final HashSet<Character> filtedChar = new HashSet<>();
     private Map<String, Gram> nGramMap = new HashMap<>();
+
+    private static Estimation estimation = null;
+
+    private Estimation() {
+
+    }
+
+    public static Estimation getInstance() {
+        if(estimation == null) {
+            estimation = new Estimation();
+        }
+        return estimation;
+    }
 
     private class Gram {
         public Map<Character, Integer> nextChar = new HashMap<>();
@@ -67,6 +80,13 @@ public class Estimation {
            }
         }
         double strength = -Math.log(probability);
+    }
+
+    public void add(String password) {
+        String process1 = filter(password);
+        for(int i = 0; i + GRAMLEN < process1.length(); i++) {
+            addGram(process1.substring(i, i + GRAMLEN), process1.charAt(i + GRAMLEN));
+        }
     }
 
     public static void main(String args[]) {
