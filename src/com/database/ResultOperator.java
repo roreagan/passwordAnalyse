@@ -12,42 +12,43 @@ import java.util.*;
  * Created by lgluo on 2016/10/15.
  */
 public class ResultOperator {
-    private static WordNode passwordNode = new WordNode();
-    private static WordNode structureNode = new WordNode();
-    private static WordNode englishNode = new WordNode();
-    private static WordNode pinyinNode = new WordNode();
+    private final int top = 30;
+    private WordNode passwordNode = new WordNode();
+    private WordNode structureNode = new WordNode();
+    private WordNode englishNode = new WordNode();
+    private WordNode pinyinNode = new WordNode();
 
-    private static Map<String, Integer> passwordMap = new HashMap<>();
-    private static Map<String, Integer> structureMap = new HashMap<>();
-    private static Map<String, Integer> englishMap = new HashMap<>();
-    private static Map<String, Integer> pinyinMap = new HashMap<>();
+    private Map<String, Integer> passwordMap = new HashMap<>();
+    private Map<String, Integer> structureMap = new HashMap<>();
+    private Map<String, Integer> englishMap = new HashMap<>();
+    private Map<String, Integer> pinyinMap = new HashMap<>();
 
-    private static Map<Character, Integer> characterIntegerMap = new HashMap();
+    private Map<Character, Integer> characterIntegerMap = new HashMap();
     //relate to KeyboardState
-    private static long[] keyboardPattern = {0, 0, 0, 0, 0};
+    private long[] keyboardPattern = {0, 0, 0, 0, 0};
     //0: pinyin_letter only   1: english_letter only   2: pinyin_mix    3:english_mix
-    private static long[] wordsPattern = {0, 0, 0, 0};
+    private long[] wordsPattern = {0, 0, 0, 0};
     //relate to DateState
-    private static long[] datePattern = {0, 0, 0, 0, 0, 0, 0};
+    private long[] datePattern = {0, 0, 0, 0, 0, 0, 0};
     //relate to DatePattern
-    private static long[] passDatePattern = {0, 0, 0, 0};
+    private long[] passDatePattern = {0, 0, 0, 0};
     //lowercase and uppercase in pinyin or words, cases[0] for pinyin and cases[1] for words
-    private static long[] cases = {0, 0};
+    private long[] cases = {0, 0};
 
-    private static long passwordNum = 0;
+    private long passwordNum = 0;
 
-    private static ResultOperator resultOperator = null;
-
-    private ResultOperator() {
-
-    }
-
-    public static ResultOperator getInstance() {
-        if(resultOperator == null) {
-            resultOperator = new ResultOperator();
-        }
-        return resultOperator;
-    }
+//    private static ResultOperator resultOperator = null;
+//
+//    private ResultOperator() {
+//
+//    }
+//
+//    public static ResultOperator getInstance() {
+//        if(resultOperator == null) {
+//            resultOperator = new ResultOperator();
+//        }
+//        return resultOperator;
+//    }
 
     //各个字符的使用频率
     public void analyseCharacter(Map<Character, Integer> map) {
@@ -93,7 +94,7 @@ public class ResultOperator {
         }
         if(node.isValue) {
             Map<String, Integer> map = chooseMap(nodeType);
-            if(map.size() < 10) {
+            if(map.size() < top) {
                 map.put(string, node.num);
             } else {
                 String minKey = string;
@@ -204,8 +205,11 @@ public class ResultOperator {
         datePattern[6] += patterns[5] * datePattern[6] / (datePattern[4] + datePattern[6]) + patterns[6] * datePattern[6] / (datePattern[5] + datePattern[6]) +  patterns[7] * datePattern[3] / (datePattern[4] + datePattern[5] + datePattern[6]);
     }
 
-    public void output() {
-        File file = new File("result.log");
+    public void output(String filename) {
+        if(filename.contains(".")) {
+            filename = filename.split(".")[0];
+        }
+        File file = new File(filename + ".log");
         BufferedWriter writer = null;
         try {
             writer = new BufferedWriter(new FileWriter(file));

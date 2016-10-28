@@ -12,33 +12,35 @@ import java.util.*;
  * Created by lgluo on 2016/10/27.
  */
 public class GenerateLibrary {
-    private static final int passwordNum = 1000;
-    private static double[] mode = {0, 0, 0, 0};
+    private  final int passwordNum = 1000;
+    private  double[] mode = {0, 0, 0, 0};
     //these arrays denote the arrange of every pattern, eg: [0.1, 0.3, 0.5] denotes the four patterns lie in [0,0.1], (0.1, 0.3], (0.3, 0.5], (0.5, 1]
     //relate to KeyboardState without no_pattern
-    private static double[] keyboardPattern = {0, 0, 0};
+    private  double[] keyboardPattern = {0, 0, 0};
     //wordPro denotes the probability of pinyin and english words
-    private static double wordsPro =  0.0;
+    private  double wordsPro =  0.0;
     //relate to DateState without on_date and temp
-    private static double[] datePattern = {0, 0, 0, 0, 0};
+    private  double[] datePattern = {0, 0, 0, 0, 0};
     //choose the top 10(or 20 or more) popular password pattern
-    private static Map<String, Double> passwordPattern = new HashMap<>();
-    private static Map<Character, Double> symbolList = new HashMap<>();
-    private static Map<Character, Double> lowercaseList = new HashMap<>();
-    private static Map<Character, Double> uppercaseList = new HashMap<>();
-    private static Map<Character, Double> digitList = new HashMap<>();
+    private  Map<String, Double> passwordPattern = new HashMap<>();
+    private  Map<Character, Double> symbolList = new HashMap<>();
+    private  Map<Character, Double> lowercaseList = new HashMap<>();
+    private  Map<Character, Double> uppercaseList = new HashMap<>();
+    private  Map<Character, Double> digitList = new HashMap<>();
 
-    private static GenerateLibrary instance = null;
+    private String libName = "";
+//    private static GenerateLibrary instance = null;
+//
+//    public static GenerateLibrary getInstance() {
+//        if(instance == null) {
+//            instance = new GenerateLibrary();
+//        }
+//        return instance;
+//    }
 
-    public static GenerateLibrary getInstance() {
-        if(instance == null) {
-            instance = new GenerateLibrary();
-        }
-        return instance;
-    }
-
-    private GenerateLibrary() {
-        File file = new File("result.log");
+    public GenerateLibrary(String filename) {
+        libName = filename;
+        File file = new File(filename + ".log");
         BufferedReader reader = null;
         try{
             reader = new BufferedReader(new FileReader(file));
@@ -228,7 +230,7 @@ public class GenerateLibrary {
     }
 
     public void generatePassword() {
-        File file = new File("passwordLib.txt");
+        File file = new File(libName + "Lib.txt");
         BufferedWriter writer = null;
         try{
             String content = "";
@@ -255,8 +257,8 @@ public class GenerateLibrary {
         }
     }
 
-    public static void main(String[] args) {
-        GenerateLibrary.getInstance().generatePassword();
-    }
+//    public static void main(String[] args) {
+//        GenerateLibrary.getInstance().generatePassword();
+//    }
 
 }

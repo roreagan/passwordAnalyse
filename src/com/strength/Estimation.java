@@ -16,9 +16,25 @@ public class Estimation {
     private Map<String, Gram> nGramMap = new HashMap<>();
 
     private static Estimation estimation = null;
+    private static String libName = "100line.txt";
 
     private Estimation() {
-
+        //cipher database
+        File readFile = new File(libName);
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(readFile));
+            String tempString = null;
+            while((tempString = reader.readLine()) != null) {
+                String process1 = estimation.filter(tempString);
+                for(int i = 0; i + estimation.GRAMLEN < process1.length(); i++) {
+                    estimation.addGram(process1.substring(i, i + estimation.GRAMLEN), process1.charAt(i + estimation.GRAMLEN));
+                }
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static Estimation getInstance() {
@@ -65,7 +81,7 @@ public class Estimation {
         nGramMap.put(portion, gram);
     }
 
-    public void checkStrength(String password) {
+    public double checkStrength(String password) {
         double probability = 1.0;
         for(int i = 0; i + GRAMLEN < password.length(); i++) {
             Gram gram = nGramMap.get(password.substring(i, i + GRAMLEN));
@@ -79,7 +95,7 @@ public class Estimation {
                probability *= miniP;
            }
         }
-        double strength = -Math.log(probability);
+        return (-Math.log(probability)) > 100.0? 100 : -Math.log(probability);
     }
 
     public void add(String password) {
@@ -89,27 +105,27 @@ public class Estimation {
         }
     }
 
-    public static void main(String args[]) {
-        Estimation estimation = new Estimation();
-        //cipher database
-        File readFile = new File("100line.txt");
-        File writeFile = new File("100output");
-        BufferedReader reader = null;
-        BufferedWriter writer = null;
-        try {
-            reader = new BufferedReader(new FileReader(readFile));
-            writer = new BufferedWriter(new FileWriter(writeFile));
-            String tempString = null;
-            while((tempString = reader.readLine()) != null) {
-                String process1 = estimation.filter(tempString);
-                for(int i = 0; i + estimation.GRAMLEN < process1.length(); i++) {
-                    estimation.addGram(process1.substring(i, i + estimation.GRAMLEN), process1.charAt(i + estimation.GRAMLEN));
-                }
-            }
-            writer.write(estimation.nGramMap.toString());
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    public static void main(String args[]) {
+//        Estimation estimation = new Estimation();
+//        //cipher database
+//        File readFile = new File("100line.txt");
+//        File writeFile = new File("100output");
+//        BufferedReader reader = null;
+//        BufferedWriter writer = null;
+//        try {
+//            reader = new BufferedReader(new FileReader(readFile));
+//            writer = new BufferedWriter(new FileWriter(writeFile));
+//            String tempString = null;
+//            while((tempString = reader.readLine()) != null) {
+//                String process1 = estimation.filter(tempString);
+//                for(int i = 0; i + estimation.GRAMLEN < process1.length(); i++) {
+//                    estimation.addGram(process1.substring(i, i + estimation.GRAMLEN), process1.charAt(i + estimation.GRAMLEN));
+//                }
+//            }
+//            writer.write(estimation.nGramMap.toString());
+//            reader.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

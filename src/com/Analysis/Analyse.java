@@ -18,6 +18,8 @@ import java.util.Map;
  */
 public class Analyse {
 
+    private ResultOperator operator = new ResultOperator();
+
     public void characterDistribution(String password){
         Map<Character, Integer> characterMap = new HashMap<>();
         for(int i = 0; i < password.length(); i++) {
@@ -29,7 +31,7 @@ public class Analyse {
                 characterMap.put(temp,  characterMap.get(temp)+1);
             }
         }
-        ResultOperator.getInstance().analyseCharacter(characterMap);
+        operator.analyseCharacter(characterMap);
     }
 
     public void structures(String password){
@@ -46,7 +48,7 @@ public class Analyse {
                 structure += "S";
             }
         }
-        ResultOperator.getInstance().add(structure, "structure");
+        operator.add(structure, "structure");
     }
 
     public void keyboardPattern(String password){
@@ -60,7 +62,7 @@ public class Analyse {
                 sameRow = sameRow & KeyboardClass.getInstance().isSameRow(pos1, pos2);
                 zigZag = zigZag & !KeyboardClass.getInstance().isSameRow(pos1,pos2);
             } else {
-                ResultOperator.getInstance().addKeyboardPattern(result.getState());
+                operator.addKeyboardPattern(result.getState());
                 return;
             }
         }
@@ -75,7 +77,7 @@ public class Analyse {
         } else {
             result = KeyboardState.SNAKE;
         }
-        ResultOperator.getInstance().addKeyboardPattern(result.getState());
+        operator.addKeyboardPattern(result.getState());
     }
 
     public void wordsAnalyse(String password) {
@@ -99,7 +101,7 @@ public class Analyse {
         }
         boolean isPinyin = WordsMatch.getInstance().identifyWord(input, "pinyin");
         boolean isEnglish = WordsMatch.getInstance().identifyWord(input, "english");
-        ResultOperator.getInstance().addWordsPattern(isPinyin, isEnglish, letterOnly, input, isUppercase);
+        operator.addWordsPattern(isPinyin, isEnglish, letterOnly, input, isUppercase);
     }
 
     public void dataFormat(String password) {
@@ -143,28 +145,26 @@ public class Analyse {
         if(date.length() == 6 || date.length() == 8) {
             result = DateFormat.getInstance().dateAnalyse(date);
             if(result != 7) {
-                ResultOperator.getInstance().addDatePattern(result, datePattern.getDatePattern());
+                operator.addDatePattern(result, datePattern.getDatePattern());
             } else {
-                ResultOperator.getInstance().addDatePattern(datePattern.getDatePattern());
+                operator.addDatePattern(datePattern.getDatePattern());
             }
         }
     }
 
-
-    public static void main(String args[]){
-        Analyse analyse = new Analyse();
-        File file = new File("test");
+    public void analyse(String filename) {
+        File file = new File(filename);
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader(file));
             String tempString = null;
             while((tempString = reader.readLine()) != null) {
-               ResultOperator.getInstance().add(tempString, "password");
-                analyse.characterDistribution(tempString);
-                analyse.structures(tempString);
-                analyse.keyboardPattern(tempString);
-                analyse.wordsAnalyse(tempString);
-                analyse.dataFormat(tempString);
+                operator.add(tempString, "password");
+                characterDistribution(tempString);
+                structures(tempString);
+                keyboardPattern(tempString);
+                wordsAnalyse(tempString);
+                dataFormat(tempString);
                 //Estimation::add() is a training process
 //                Estimation.getInstance().add(tempString);
             }
@@ -172,10 +172,36 @@ public class Analyse {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        ResultOperator.getInstance().addRestDatePattern(DateFormat.getInstance().getRestDatePattern());
-        ResultOperator.getInstance().output();
-        //GenerateLibrary::generatePassword() can't be invoked before ResultOperator::output()
-        //because GenerateLibrary should use result.log to initialization
-        GenerateLibrary.getInstance().generatePassword();
+        operator.addRestDatePattern(DateFormat.getInstance().getRestDatePattern());
+        operator.output(filename);
     }
+
+
+//    public static void main(String args[]){
+//        Analyse analyse = new Analyse();
+//        File file = new File("test");
+//        BufferedReader reader = null;
+//        try {
+//            reader = new BufferedReader(new FileReader(file));
+//            String tempString = null;
+//            while((tempString = reader.readLine()) != null) {
+//               ResultOperator.getInstance().add(tempString, "password");
+//                analyse.characterDistribution(tempString);
+//                analyse.structures(tempString);
+//                analyse.keyboardPattern(tempString);
+//                analyse.wordsAnalyse(tempString);
+//                analyse.dataFormat(tempString);
+//                //Estimation::add() is a training process
+////                Estimation.getInstance().add(tempString);
+//            }
+//            reader.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        ResultOperator.getInstance().addRestDatePattern(DateFormat.getInstance().getRestDatePattern());
+//        ResultOperator.getInstance().output();
+//        //GenerateLibrary::generatePassword() can't be invoked before ResultOperator::output()
+//        //because GenerateLibrary should use result.log to initialization
+//        GenerateLibrary.getInstance().generatePassword();
+//    }
 }
