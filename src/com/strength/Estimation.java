@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public class Estimation {
     public final int GRAMLEN = 3;
-    public final double miniP = 0.001;
+    public final double miniP = 0.0001;
     //用来过滤用的比较少的字符来节省内存
     private final HashSet<Character> filtedChar = new HashSet<>();
     private Map<String, Gram> nGramMap = new HashMap<>();
@@ -26,9 +26,9 @@ public class Estimation {
             reader = new BufferedReader(new FileReader(readFile));
             String tempString = null;
             while((tempString = reader.readLine()) != null) {
-                String process1 = estimation.filter(tempString);
-                for(int i = 0; i + estimation.GRAMLEN < process1.length(); i++) {
-                    estimation.addGram(process1.substring(i, i + estimation.GRAMLEN), process1.charAt(i + estimation.GRAMLEN));
+                String process1 = filter(tempString);
+                for(int i = 0; i + GRAMLEN < process1.length(); i++) {
+                    addGram(process1.substring(i, i + GRAMLEN), process1.charAt(i + GRAMLEN));
                 }
             }
             reader.close();
@@ -81,13 +81,13 @@ public class Estimation {
         nGramMap.put(portion, gram);
     }
 
-    public double checkStrength(String password) {
+    public int checkStrength(String password) {
         double probability = 1.0;
         for(int i = 0; i + GRAMLEN < password.length(); i++) {
             Gram gram = nGramMap.get(password.substring(i, i + GRAMLEN));
            if(gram != null) {
                if(gram.nextChar.get(password.charAt(i + GRAMLEN)) != null) {
-                   probability *= gram.nextChar.get(password.charAt(i + GRAMLEN)) / gram.num;
+                   probability *= (double)gram.nextChar.get(password.charAt(i + GRAMLEN)) / gram.num;
                } else {
                    probability *= miniP;
                }
@@ -95,7 +95,9 @@ public class Estimation {
                probability *= miniP;
            }
         }
-        return (-Math.log(probability)) > 100.0? 100 : -Math.log(probability);
+        int score = (int)(-Math.log(probability));
+        score = score >=0 ? score : -score;
+        return  score > 100 ? 100 : score;
     }
 
     public void add(String password) {

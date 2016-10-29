@@ -1,0 +1,24 @@
+总共分析的密码数
+999999
+字符的使用频率
+!:2673    ":104    #:1060    $:1014    %:170    &:274    ':304    (:391    ):417    *:835    +:228    ,:364    -:976    .:1827    /:348    0:335367    1:461987    2:320599    3:216483    4:171812    5:165946    6:165361    7:177679    8:169235    9:201876    ::36    ;:472    <:65    =:312    >:65    ?:135    @:2869    A:5815    B:3377    C:3671    D:2784    E:3177    F:1809    G:2051    H:2266    I:2247    J:2093    K:1540    L:3044    M:4456    N:2756    O:1999    P:3179    Q:618    R:3386    S:5473    T:2935    U:837    V:966    W:1556    X:372    Y:717    Z:554    [:125    \:3    ]:99    ^:69    _:850    `:37    a:599002    b:148728    c:184735    d:181326    e:508469    f:71512    g:127185    h:154830    i:369286    j:66564    k:131432    l:295643    m:211156    n:349999    o:353058    p:122721    q:10894    r:349404    s:282526    t:237246    u:155689    v:56728    w:52569    x:22420    y:118510    z:31995    {:79    |:44    }:79    ~:21    
+5193627
+63678
+2386345
+63678
+密码结构Top10
+LLLLDD:26068    LLLLLLDDD:9696    LLLLLLLLD:11354    LLLLLL:94087    LLLLLLLDD:22332    LLLLLLLLL:40366    DDDDDDD:31447    LLLLLDDD:19060    LLLLLLLD:23958    LLLLLDDDD:12864    LLLLLDD:32920    LLLLLLDDDD:7772    LLLLLLL:66559    LLLDDDD:8122    LLLLLLLLDD:10137    LLLLLLLLLL:25234    LLLLDDD:7794    LLLLLLD:18586    DDDDDDDD:55026    DDDDDD:93339    LLLLLLLLLD:5183    LLLLDDDD:23903    LLLLLLDD:60259    LLLLLLLLLLL:10060    LLLLLLLL:81173    LLLLLLLLLLLL:5162    ULLLLLDD:4945    LLLDDD:9378    LLLLLD:19728    LLDDDD:11832    
+常用密码Top30
+bigfoot:2    almamater:2    anthony1:2    allahakbar:2    bigboi:2    bigdaddy:2    bigbertha:2    555555:2    bigmike:2    annmarie:2    JesusChrist:2    bigred:2    babydoll:2    Iloveyou:2    artwork:2    24hours:2    agnusdei:2    allright:2    1raven:2    iloveyou:3    bigfish:2    bigreds:2    billgates:2    badboys:2    billybob:2    123123:2    bigguy:2    FUCKYOU:2    angellove:2    bendover:2    
+键盘密码
+no_pattern:995063    same_row:624    zig_zag:565    snake:2425    same_row_number_only:1322
+日期格式分析
+no_date:100249    YYYYMMDD:3826    MMDDYYYY:4488    DDMMYYYY:12576    YYMMDD:6685    MMDDYY:14086    DDMMYY:11255
+日期密码构成
+digit_only:52654    letter_digit:2131    symbol_digit:9    letter_digit_symbol:38
+拼音Top30
+de:155    panda:125    duke:184    mike:593    ben:116    mimi:156    chase:119    dan:123    julie:147    luke:158    karen:181    ma:142    julia:161    dani:130    mama:145    sasha:139    nina:152    ca:270    banana:125    denise:133    katie:181    linda:163    maya:125    gemini:167    marina:130    canada:150    kate:142    lisa:267    da:229    ba:219    
+英文单词Top30
+bb:496    dd:312    love:724    monkey:334    happy:315    james:335    link:334    angel:432    april:320    password:754    david:408    hunter:316    cb:333    cc:428    ab:697    ac:315    abc:362    may:591    pass:340    july:422    jack:407    daniel:350    alex:746    june:524    jesus:314    blue:467    john:474    db:348    mark:330    dc:315    
+单词密码构成
+pinyin_letter_only:15957    english_letter_only:196992    pinyin_mixed:32218    english_mixed:303662    pinyin_uppercase_letter:1798    english_uppercase_letter:28739

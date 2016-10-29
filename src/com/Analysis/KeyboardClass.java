@@ -58,10 +58,18 @@ public class KeyboardClass {
         return keyboard.get(c);
     }
 
+    public boolean isNull(char c) {
+        return keyboard.get(c) == null;
+    }
+
     public boolean isAdjacent(char pos1, char pos2){
         boolean adjacent = false;
         List<Integer> position1 = keyboard.get(pos1);
         List<Integer> position2 = keyboard.get(pos2);
+        if(position1 == null || position2 == null) {
+            System.out.println("" + (pos1 - '\00') + " | " + (pos2 - '\00'));
+            System.out.println("" + pos1 + " | " + pos2);
+        }
         if((Math.abs(position1.get(0) - position2.get(0)) <= 1) && (Math.abs(position1.get(1) - position2.get(1)) <= 1)) {
             adjacent = true;
         }

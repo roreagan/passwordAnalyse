@@ -155,10 +155,14 @@ public class Analyse {
     public void analyse(String filename) {
         File file = new File(filename);
         BufferedReader reader = null;
+        int count = 0;
         try {
             reader = new BufferedReader(new FileReader(file));
             String tempString = null;
             while((tempString = reader.readLine()) != null) {
+                if(count % 100000 == 0) {
+                    System.out.println(count);
+                }
                 operator.add(tempString, "password");
                 characterDistribution(tempString);
                 structures(tempString);
@@ -167,6 +171,7 @@ public class Analyse {
                 dataFormat(tempString);
                 //Estimation::add() is a training process
 //                Estimation.getInstance().add(tempString);
+                count++;
             }
             reader.close();
         } catch (IOException e) {

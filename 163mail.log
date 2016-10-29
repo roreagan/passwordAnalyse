@@ -1,0 +1,24 @@
+总共分析的密码数
+3727349
+字符的使用频率
+!:4122    ":15    #:1581    $:707    &:32    ':94    (:411    ):471    *:6342    +:152    ,:1375    -:3159    .:30821    /:2436    0:2611880    1:3966326    2:2891930    3:2313143    4:1664227    5:2274745    6:1952196    7:1596491    8:2498165    9:2075922    ::90    ;:265    <:106    =:952    >:138    ?:1715    @:7435    A:14747    B:3693    C:4513    D:4196    E:5531    F:2855    G:6637    H:7347    I:9972    J:4672    K:2121    L:8310    M:3835    N:10117    O:7666    P:1995    Q:4832    R:2189    S:5696    T:2900    U:4823    V:1201    W:6322    X:4782    Y:6770    Z:6004    [:181    \:70    ]:192    ^:205    _:3052    `:810    a:840275    b:137370    c:200420    d:183785    e:363892    f:119375    g:381755    h:388858    i:675951    j:212471    k:100027    l:336485    m:162602    n:665459    o:373439    p:82894    q:222068    r:101656    s:294831    t:121353    u:320114    v:45695    w:326705    x:223858    y:302828    z:272128    {:29    |:25    }:27    ~:796    
+7456294
+143726
+23845025
+143726
+密码结构Top10
+DDDDDDLLL:19769    LLLLLLDDD:30780    LLLLLL:55696    DDDDDDDDD:259369    DDDDDDDDDDD:175250    LLLLLLLLL:58574    DDDDDDD:509503    LLLLLDDD:21735    DDDDDDDDDD:119448    LLLLLDDDD:23870    LDDDDDDD:40525    LLLLLLDDDD:27576    LLLLLLL:50008    LLLDDDD:20193    LLLLLLLLLL:49255    LLDDDDDD:54970    DDDDDDDD:518482    DDDDDDLL:19728    DDDDDD:528339    LLLDDDDDD:68607    LLLLLLLDDD:23742    LLLDDDDDDDD:21047    LLLLDDDD:32769    LLLLLLLL:87596    LLLLDDDDDD:23619    LDDDDDDDD:26408    LLDDDDDDDD:33777    LLDDDDDDD:50202    DDDDDDDDDDDD:24428    LLLDDDDDDD:46260    
+常用密码Top30
+5201314:5334    1q2w3e4r:886    111111:6979    123456789:9184    7758521:2629    12345678:1459    1qaz2wsx:863    hao123456:1720    qazwsx:1125    123456a:2221    123456:38047    woaini:1116    000000:4300    woaini1314:1430    7758258:1030    520520:1005    1314520:2010    a123456789:903    123123:4698    123321:1911    a123456:4175    31415926:1027    666666:1278    seoer2010:1038    100200:989    qq123456:1546    123qwe:867    1234567:892    888888:858    5211314:1261    
+键盘密码
+no_pattern:3613550    same_row:6263    zig_zag:3492    snake:13363    same_row_number_only:90681
+日期格式分析
+no_date:898763    YYYYMMDD:296073    MMDDYYYY:3605    DDMMYYYY:3151    YYMMDD:220413    MMDDYY:36834    DDMMYY:8695
+日期密码构成
+digit_only:394301    letter_digit:171028    symbol_digit:1315    letter_digit_symbol:3495
+拼音Top30
+zhu:1388    zhang:4879    hu:1258    sun:1600    aini:1345    long:1713    lin:1680    ma:1160    feng:1411    hao:2725    wo:1960    liu:3762    wei:1849    yu:2288    huang:1788    liang:1084    wu:1456    chen:2954    woaini:7553    wan:1084    zhao:1417    xiao:1502    yan:1154    ai:1463    zhou:1541    wang:5425    yang:3043    jiang:1123    li:5052    xu:1513    
+英文单词Top30
+bb:1233    dd:899    ff:783    ll:1898    love:3833    lp:799    lq:767    asdasd:901    ly:2172    seoer:1038    jy:1098    sd:1862    wh:815    wj:1582    wl:1231    sj:750    asdf:1858    ok:1701    cc:1817    sky:735    ab:3150    abc:9647    king:796    zb:729    zc:1275    windows:741    as:6554    lc:753    lh:740    lj:1766    
+单词密码构成
+pinyin_letter_only:194996    english_letter_only:49034    pinyin_mixed:352306    english_mixed:175766    pinyin_uppercase_letter:12335    english_uppercase_letter:7883

@@ -254,7 +254,7 @@ public class ResultOperator {
             }
             result += "\n";
             //3.常用密码Top10:
-            result += "常用密码Top10\n";
+            result += "常用密码Top30\n";
             Map<String, Integer> passwordReusltMap = findTop10("password");
             Iterator passwordEntries = passwordMap.entrySet().iterator();
             while(passwordEntries.hasNext()) {
@@ -276,7 +276,7 @@ public class ResultOperator {
             result += "日期密码构成\n";
             result += "digit_only:" + passDatePattern[0] + "    letter_digit:" + passDatePattern[1] + "    symbol_digit:" + passDatePattern[2] + "    letter_digit_symbol:" + passDatePattern[3] + "\n";
             //拼音Top10
-            result += "拼音Top10\n";
+            result += "拼音Top30\n";
             Map<String, Integer> pinyinReusltMap = findTop10("pinyin");
             Iterator pinyinEntries = pinyinMap.entrySet().iterator();
             while(pinyinEntries.hasNext()) {
@@ -287,7 +287,7 @@ public class ResultOperator {
             }
             result += "\n";
             //英文单词Top10
-            result += "英文单词Top10\n";
+            result += "英文单词Top30\n";
             Map<String, Integer> englishReusltMap = findTop10("english");
             Iterator englishEntries = englishMap.entrySet().iterator();
             while(englishEntries.hasNext()) {
