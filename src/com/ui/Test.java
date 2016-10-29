@@ -27,7 +27,7 @@ public class Test {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
         Test test = new Test();
-        test.analyse("linkedin");
+        test.analyse("163mail");
         System.out.print(System.currentTimeMillis() - start);
     }
 }
