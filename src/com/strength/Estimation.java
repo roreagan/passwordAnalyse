@@ -10,13 +10,13 @@ import java.util.Map;
  */
 public class Estimation {
     public final int GRAMLEN = 3;
-    public final double miniP = 0.0001;
+    public final double miniP = 0.00001;
     //用来过滤用的比较少的字符来节省内存
     private final HashSet<Character> filtedChar = new HashSet<>();
     private Map<String, Gram> nGramMap = new HashMap<>();
 
     private static Estimation estimation = null;
-    private static String libName = "100line.txt";
+    private static String libName = "163mail";
 
     private Estimation() {
         //cipher database

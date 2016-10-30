@@ -11,7 +11,7 @@ DDDDDDLLL:12279    LLLLLLDDD:18458    LLLLLL:34071    DDDDDDDDD:156635    DDDDDD
 常用密码Top30
 5201314:3307    1q2w3e4r:514    111111:4438    123456789:5609    7758521:1610    12345678:869    1qaz2wsx:503    hao123456:917    123456a:1438    123456:24138    qwe123:516    woaini:675    000000:2809    woaini1314:901    7758258:636    112233:517    520520:607    1314520:1283    a123456789:555    123123:2795    123321:1143    a123456:2631    31415926:584    666666:826    100200:592    qq123456:978    123qwe:536    1234567:560    888888:582    5211314:807    
 键盘密码
-no_pattern:2235351    same_row:3912    zig_zag:2135    snake:8215    same_row_number_only:57378
+no_pattern:2264074    same_row:2073    zig_zag:2135    snake:3498    same_row_number_only:35211
 日期格式分析
 no_date:560651    YYYYMMDD:183373    MMDDYYYY:2319    DDMMYYYY:2006    YYMMDD:141376    MMDDYY:23211    DDMMYY:5431
 日期密码构成
@@ -19,6 +19,6 @@ digit_only:248981    letter_digit:106523    symbol_digit:868    letter_digit_sym
 拼音Top30
 zhu:826    zhang:3009    hu:775    sun:1008    aini:819    long:1017    lin:1051    ma:738    feng:882    hao:1571    wo:1216    liu:2317    wei:1145    yu:1510    huang:1093    liang:658    wu:907    chen:1832    woaini:4612    wan:716    zhao:868    xiao:938    yan:737    ai:943    zhou:911    wang:3397    yang:1862    jiang:715    li:3059    xu:913    
 英文单词Top30
-bb:761    dd:552    ff:473    ll:1148    love:2377    lp:499    lq:471    asdasd:537    wc:452    ly:1375    jy:672    wf:445    sd:1124    wh:525    password:451    wj:960    wl:747    sj:479    asdf:1185    ok:1042    cc:1133    sky:463    ab:1981    abc:6171    king:491    zc:744    as:4036    lc:489    lh:469    lj:1076    
+bb:761    dd:552    ff:473    ll:1148    love:2377    lp:499    lq:471    asdasd:537    wc:452    ly:1375    jy:672    sd:1124    wh:525    password:451    wj:960    wl:747    sj:479    asdf:1185    ok:1042    cc:1133    sky:463    ab:1981    abc:6171    king:491    zc:744    iloveyou:729    as:4036    lc:489    lh:469    lj:1076    
 单词密码构成
-pinyin_letter_only:116847    english_letter_only:29750    pinyin_mixed:217382    english_mixed:108819    pinyin_uppercase_letter:7634    english_uppercase_letter:5080
+pinyin_letter_only:116847    english_letter_only:32329    pinyin_mixed:217382    english_mixed:111859    pinyin_uppercase_letter:7634    english_uppercase_letter:5412

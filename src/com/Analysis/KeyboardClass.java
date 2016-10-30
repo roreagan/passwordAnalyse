@@ -13,6 +13,10 @@ public class KeyboardClass {
     private static KeyboardClass keyboardClass;
 
     private KeyboardClass(){
+        List<Integer> spacePosition = new ArrayList<>();
+        spacePosition.add(-3);
+        spacePosition.add(-3);
+        keyboard.put(' ', spacePosition);
         String string1 = "`1234567890-=~!@#$%^&*()_+";
         for(int i = 0; i < string1.length()/2; i++) {
             List<Integer> position = new ArrayList<>();
@@ -64,6 +68,9 @@ public class KeyboardClass {
 
     public boolean isAdjacent(char pos1, char pos2){
         boolean adjacent = false;
+        if(pos1 == pos2) {
+            return adjacent;
+        }
         List<Integer> position1 = keyboard.get(pos1);
         List<Integer> position2 = keyboard.get(pos2);
         if(position1 == null || position2 == null) {

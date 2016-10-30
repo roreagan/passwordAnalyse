@@ -78,16 +78,18 @@ public class GenerateLibrary {
                         symbolNum = Integer.valueOf(readBuffer);
                         String[] charList = charsBuffer.split("    ");
                         for(int i = 0; i < charList.length; i++) {
-                            String[] temp = charList[i].split(":");
-                            char c = temp[0].charAt(0);
-                            if(c >= 97 && c <= 122) {
-                                lowercaseList.put(c, (double)Integer.valueOf(temp[1])/lowercaseNum);
-                            } else if(c >= 65 && c <= 90) {
-                                uppercaseList.put(c, (double)Integer.valueOf(temp[1])/uppercaseNum);
-                            } else if(c >= 48 && c <= 57) {
-                                digitList.put(c, (double)Integer.valueOf(temp[1])/digitNum);
-                            } else {
-                                symbolList.put(c, (double)Integer.valueOf(temp[1])/symbolNum);
+                            if (charList[i].charAt(0) != ':') {
+                                String[] temp = charList[i].split(":");
+                                char c = temp[0].charAt(0);
+                                if (c >= 97 && c <= 122) {
+                                    lowercaseList.put(c, (double) Integer.valueOf(temp[1]) / lowercaseNum);
+                                } else if (c >= 65 && c <= 90) {
+                                    uppercaseList.put(c, (double) Integer.valueOf(temp[1]) / uppercaseNum);
+                                } else if (c >= 48 && c <= 57) {
+                                    digitList.put(c, (double) Integer.valueOf(temp[1]) / digitNum);
+                                } else {
+                                    symbolList.put(c, (double) Integer.valueOf(temp[1]) / symbolNum);
+                                }
                             }
                         }
                         break;

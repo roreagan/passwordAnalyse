@@ -11,14 +11,14 @@ LLLLDD:5756    LLLLLLDDD:6110    LLLLLLLLD:6053    LLLLLL:40700    LLLLLLLDD:102
 常用密码Top30
 monkey:162    shadow:134    sunshine:205    111111:160    michelle:109    123456789:222    abc123:250    qwerty:172    12345678:208    dragon:107    password:780    freedom:161    123456:1667    jordan:111    princess:202    password1:139    welcome:437    ashley:103    1a1a1a1b:131    tigger:132    whatever:110    iloveyou:140    michael:160    success:126    purple:106    baseball:133    blackhatworld:121    writer:164    superman:106    1234567:106    
 键盘密码
-no_pattern:428302    same_row:900    zig_zag:389    snake:944    same_row_number_only:3723
+no_pattern:430127    same_row:469    zig_zag:389    snake:602    same_row_number_only:2671
 日期格式分析
-no_date:17396    YYYYMMDD:459    MMDDYYYY:1792    DDMMYYYY:1262    YYMMDD:770    MMDDYY:4525    DDMMYY:1047
+no_date:17396    YYYYMMDD:6525    MMDDYYYY:8317    DDMMYYYY:2664    YYMMDD:770    MMDDYY:8495    DDMMYY:1488
 日期密码构成
 digit_only:6406    letter_digit:4090    symbol_digit:17    letter_digit_symbol:90
 拼音Top30
 panda:43    minnie:59    duke:60    mike:184    ben:42    mimi:43    chase:42    sa:45    ma:56    mama:40    ca:53    banana:94    chance:83    michigan:42    change:53    denise:74    katie:71    monica:42    natalie:61    linda:43    gemini:108    julian:40    sadie:54    police:45    canada:52    monique:45    future:49    lisa:55    duncan:42    dude:41    
 英文单词Top30
-love:375    monkey:434    shadow:302    sunshine:373    angel:299    dragon:275    nicole:223    content:274    password:1411    freedom:389    joshua:240    jordan:306    maggie:220    princess:362    welcome:536    ashley:228    soccer:232    ac:435    abc:506    tigger:268    jesus:393    june:277    blue:276    money:320    success:268    associated:290    purple:269    baseball:248    writer:371    charlie:237    
+love:375    monkey:434    shadow:302    sunshine:373    angel:299    dragon:275    nicole:223    content:274    password:1411    freedom:389    joshua:240    jordan:306    princess:362    welcome:536    ashley:228    soccer:232    ac:435    abc:506    tigger:268    iloveyou:252    jesus:393    june:277    blue:276    money:320    success:268    associated:290    purple:269    baseball:248    writer:371    charlie:237    
 单词密码构成
-pinyin_letter_only:4480    english_letter_only:100642    pinyin_mixed:10130    english_mixed:144710    pinyin_uppercase_letter:1029    english_uppercase_letter:18890
+pinyin_letter_only:4480    english_letter_only:104131    pinyin_mixed:10130    english_mixed:148985    pinyin_uppercase_letter:1029    english_uppercase_letter:19577
